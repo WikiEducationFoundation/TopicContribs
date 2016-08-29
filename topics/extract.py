@@ -45,7 +45,10 @@ def _analyse_single_dump(dump, path, cohorts, pages):
         history = revhistory.RevHistory(page)
         prev_bytes = 0
         for rev in history.revert_free_revisions():
-            if rev.deleted:
+            if (rev.deleted.text is True or
+                    rev.deleted.comment is True or
+                    rev.deleted.user is True or
+                    rev.deleted.restricted is True):
                 continue
             size = max(rev.bytes - prev_bytes, 0)
             date = rev.timestamp.strftime("%Y-%m-%d")

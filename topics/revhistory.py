@@ -12,9 +12,6 @@ class RevHistory(object):
                 cut_off = recent_sha1.index(rev.sha1) + 1
                 recent_sha1 = recent_sha1[:cut_off]
                 recent = recent[:cut_off]
-                logging.info("{0} reverts to {1}".format(
-                    rev.id, recent[-1].id
-                ))
                 continue
             recent_sha1.append(rev.sha1)
             recent.append(rev)
