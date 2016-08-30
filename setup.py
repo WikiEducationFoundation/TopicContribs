@@ -8,6 +8,6 @@ setup(
     author='Kevin Schiroo',
     author_email='kjschiroo@gmail.com',
 
-    packages=['topics'],
+    packages=['topics', 'topicutils'],
     install_requires=['mwxml', 'docopt']
 )
