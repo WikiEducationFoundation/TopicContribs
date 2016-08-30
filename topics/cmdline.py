@@ -41,7 +41,8 @@ def output_results(results, output_dir):
         filename = "{0}.csv".format(cohort)
         with open(join(output_dir, filename), "w") as f:
             writer = csv.writer(f)
-            for key, value in result.items():
+            sorted_results = sorted(result.items(), key=lambda x: x[0])
+            for key, value in sorted_results:
                 writer.writerow([key, value])
 
 
@@ -55,7 +56,6 @@ def main(args):
                                           args["--apm"])
     results = extract.analyse_dumps(dump_paths, cohorts, pages)
     output_results(results, args["--out"])
-
 
 
 if __name__ == "__main__":

@@ -26,11 +26,26 @@ Module for analyzing contributions to a topic on Wikipedia.
         -v, --verbose                Generate verbose output.
 
 ## Input files ##
+### `path_to_dumps` ###
+These must be full history dumps.
+- For minimal size and maximal parallelization use
+  `<wiki>-<date>-stub-meta-history<number>.xml.gz`
+- If you want to use a single file
+  `<wiki>-<date>-stub-meta-history.xml.gz`
+- If you already have the full text history dumps downloaded and you feel like
+  using them `<wiki>-<date>-pages-meta-history<number>.xml-<page_range>.bz2`
+  will work.
+
 ### `article_project_path` ###
 This file provides a map between articles are the projects they are included in.
 We expect it to be a `.csv` following the format
 
-    <page_id>,<page_title>,<project_name>
+    <page_id>,<project_name>
+
+#### Generating this file ####
+This file can be produced by running `sql/page_project_map.sql` on `wmflabs`
+and replacing `<user_database>` with your user database.
+
 
 ### `project_list_path` ###
 This is a file listing all of the project names we are interested in. The
@@ -41,3 +56,7 @@ names must match those in the `project_name` column of the
 A file or set of files listing the usernames of the users we are interested in
 tracking. If multiple are used then each will be summed separately and output
 to a separate output file.
+
+## Output files ##
+We will output one timeseries file for each `cohort_file` and one extra
+`general` file for all activity.
