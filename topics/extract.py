@@ -14,7 +14,7 @@ def get_pages_of_interest(projects_filepath, project_page_map_filepath):
     with open(project_page_map_filepath) as f:
         reader = csv.reader(f)
         pages = [int(r[0]) for r in reader if r[1] in projects]
-    return pages
+    return set(pages)
 
 
 def load_cohorts(cohort_files_paths):
