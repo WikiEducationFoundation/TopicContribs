@@ -36,6 +36,9 @@ These must be full history dumps.
   using them `<wiki>-<date>-pages-meta-history<number>.xml-<page_range>.bz2`
   will work.
 
+You can use mwdumps to download the latest set of dumps: https://github.com/kjschiroo/python-mwdumps
+- `python3 -m mwdumps.cmdline --wiki=enwiki -v /path/to/save/dumps`
+
 ### `article_project_path` ###
 This file provides a map between articles are the projects they are included in.
 We expect it to be a `.csv` following the format
