@@ -14,6 +14,7 @@ Module for analyzing contributions to a topic on Wikipedia.
     Usage:
         cmdline --dumps=<path_to_dumps> --out=<path_to_output_dir>
                 [--apm=<article_project_path>] [--pl=<project_list_path>]
+                [--threads=<num_threads>]
                 [--verbose] [<cohort_file> ... ]
         cmdline (-h | --help)
     Options:
@@ -22,6 +23,8 @@ Module for analyzing contributions to a topic on Wikipedia.
         --apm=<article_project_path> Path to a csv of page_id project_name pairs.
         --pl=<project_list_path>     Path to a csv with all project_name's that you
                                         would like to be included in the count.
+        --threads=<num_threads>      Number of threads to be used. All available
+                                        will be used if not specified.
         <cohort_file>                File containing usernames of interest.
         -v, --verbose                Generate verbose output.
 

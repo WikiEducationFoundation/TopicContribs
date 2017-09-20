@@ -2,6 +2,7 @@
 Usage:
     cmdline --dumps=<path_to_dumps> --out=<path_to_output_dir>
             [--apm=<article_project_path>] [--pl=<project_list_path>]
+            [--threads=<num_threads>]
             [--verbose] [<cohort_file> ... ]
     cmdline (-h | --help)
 Options:
@@ -10,6 +11,8 @@ Options:
     --apm=<article_project_path> Path to a csv of page_id project_name pairs.
     --pl=<project_list_path>     Path to a csv with all project_name's that you
                                     would like to be included in the count.
+    --threads=<num_threads>      Number of threads to be used. All available
+                                    will be used if not specified.
     <cohort_file>                File containing usernames of interest.
     -v, --verbose                Generate verbose output.
 """
@@ -54,7 +57,9 @@ def main(args):
     cohorts = extract.load_cohorts(args["<cohort_file>"])
     pages = extract.get_pages_of_interest(args["--pl"],
                                           args["--apm"])
-    results = extract.analyse_dumps(dump_paths, cohorts, pages)
+    results = extract.analyse_dumps(
+        dump_paths, cohorts, pages, threads=args["--threads"]
+    )
     output_results(results, args["--out"])
 
 
