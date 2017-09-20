@@ -58,7 +58,7 @@ def main(args):
     pages = extract.get_pages_of_interest(args["--pl"],
                                           args["--apm"])
     results = extract.analyse_dumps(
-        dump_paths, cohorts, pages, threads=args["--threads"]
+        dump_paths, cohorts, pages, threads=int(args["--threads"])
     )
     output_results(results, args["--out"])
 
