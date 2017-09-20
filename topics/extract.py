@@ -27,10 +27,10 @@ def load_cohorts(cohort_files_paths):
     return cohorts
 
 
-def analyse_dumps(dumps, cohorts, pages):
+def analyse_dumps(dumps, cohorts, pages, threads=None):
     results = _init_cohort_contribs(cohorts)
     _partial = partial(_analyse_single_dump, cohorts=cohorts, pages=pages)
-    for sub_res in mwxml.map(_partial, dumps):
+    for sub_res in mwxml.map(_partial, dumps, threads=threads):
         for cohort in sub_res:
             results[cohort].update(sub_res[cohort])
     return results
