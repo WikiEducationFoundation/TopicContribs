@@ -43,7 +43,7 @@ You can use mwdumps to download the latest set of dumps: https://github.com/kjsc
 - `python3 -m mwdumps.cmdline --wiki=enwiki -v /path/to/save/dumps`
 
 ### `article_project_path` ###
-This file provides a map between articles are the projects they are included in.
+This file provides a map between articles and the projects they are included in.
 We expect it to be a `.csv` following the format
 
     <page_id>,<project_name>
