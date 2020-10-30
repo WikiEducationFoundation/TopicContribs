@@ -24,14 +24,19 @@ from os import listdir
 from os.path import isfile, join
 from . import extract
 import csv
+import gzip
 
 
 def _get_files_to_work_on(input_dir):
     raw_files = [join(input_dir, f) for f in listdir(input_dir)
                  if isfile(join(input_dir, f))]
-    dump_files = [f for f in raw_files
+    try:
+        dump_files = [f for f in raw_files
                   if re.match('.*stub-meta-history(\d+).xml', f)]
-    return dump_files
+    except expression as identifier:
+        dump_files = [gzip.open(f) for f in raw_files
+                  if re.match('.*stub-meta-history(\d+).xml.gz', f)]  
+        return dump_files
 
 
 def create_dir_if_not_exists(path):
