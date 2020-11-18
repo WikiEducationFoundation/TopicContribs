@@ -40,7 +40,7 @@ These must be full history dumps.
   will work.
 
 You can use mwdumps to download the latest set of dumps: https://github.com/kjschiroo/python-mwdumps
-- `python3 -m mwdumps.cmdline --wiki=enwiki -v /path/to/save/dumps`
+- `mwdumps --wiki=enwiki -v /path/to/save/dumps`
 
 ### `article_project_path` ###
 This file provides a map between articles and the projects they are included in.
